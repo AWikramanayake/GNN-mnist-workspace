@@ -41,3 +41,6 @@ Figure 4:  a graph with additional longer edges
 </p>
 
 However, introducing this many edges may be computationally prohibitive, so finding other potential edge and node features might be a more prudent approach. And of course, as other work in this area has shown, creating nodes that do not correspond to pixels 1:1 may be an even better approach [1].
+
+
+[1]: Monti, F., Boscaini, D., Masci, J., Rodola, E., Svoboda, J., &amp; Bronstein, M. M. (2017). Geometric deep learning on graphs and manifolds using mixture model cnns. 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR). https://doi.org/10.1109/cvpr.2017.576 
