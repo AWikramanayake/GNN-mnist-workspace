@@ -11,17 +11,17 @@ A visualization of the process is shown below:
 
 ![Figure 1: an example image from the MNIST dataset](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true)
 
-    Figure 1: an example image from the MNIST dataset
+   Figure 1: an example image from the MNIST dataset
 
 
 ![Figure 2: the image after the pixels are set to the binary on/off state](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20binary%20example.png?raw=true)
 
-    Figure 2: the image after the pixels are set to the binary on/off state
+   Figure 2: the image after the pixels are set to the binary on/off state
 
 
 ![Figure 3: the resulting graph](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20example.png?raw=true)
 
-    Figure 3: the resulting graph
+   Figure 3: the resulting graph
 
 In addition to fine tuning the model and hyperparameters, the next steps consist of improving the features of the graph.
 The current implementation notably lacks edge features.
@@ -29,7 +29,7 @@ One possible improvement would be to add edges to more distant neighbours, with 
 
 
 ![Figure 4:  a graph with additional longer edges](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20extended%20example.png?raw=true)
-
-    Figure 4:  a graph with additional longer edges
+   
+   Figure 4:  a graph with additional longer edges
 
 However, introducing this many edges may be computationally prohibitive, so finding other potential edge and node features might be a more prudent approach. And of course, as other work in this area has shown, creating nodes that do not correspond to pixels 1:1 may be an even better approach [1].
