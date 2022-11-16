@@ -3,14 +3,13 @@ import scipy.sparse as sp
 from scipy.spatial.distance import cdist
 import tensorflow as tf
 
-from spektral.data import Dataset, Graph
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.losses import SparseCategoricalCrossentropy
 from tensorflow.keras.metrics import sparse_categorical_accuracy
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.regularizers import l2
-
+from spektral.data import Dataset, Graph
 from spektral.data import BatchLoader
 from spektral.datasets.mnist import MNIST
 from spektral.layers import GCNConv, GlobalSumPool
