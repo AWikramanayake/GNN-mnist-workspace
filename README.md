@@ -8,28 +8,32 @@ At present, the DatasetGeneration class produces graphs similar to those that ca
 
 A visualization of the process is shown below:
 
-
+<p align="center">
 ![Figure 1: an example image from the MNIST dataset](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true)
+</p>
 
-   Figure 1: an example image from the MNIST dataset
+<p style="text-align: center;">Figure 1: an example image from the MNIST dataset</p>
 
-
+<p align="center">
 ![Figure 2: the image after the pixels are set to the binary on/off state](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20binary%20example.png?raw=true)
+</p>
 
-   Figure 2: the image after the pixels are set to the binary on/off state
+<p style="text-align: center;">Figure 2: the image after the pixels are set to the binary on/off state</p>
 
-
+<p align="center">
 ![Figure 3: the resulting graph](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20example.png?raw=true)
+</p>
 
-   Figure 3: the resulting graph
+<p style="text-align: center;">Figure 3: the resulting graph</p>
 
 In addition to fine tuning the model and hyperparameters, the next steps consist of improving the features of the graph.
 The current implementation notably lacks edge features.
 One possible improvement would be to add edges to more distant neighbours, with the edges weighted by distance.
 
-
+<p align="center">
 ![Figure 4:  a graph with additional longer edges](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20extended%20example.png?raw=true)
-   
-   Figure 4:  a graph with additional longer edges
+</p>
+
+<p style="text-align: center;">Figure 4:  a graph with additional longer edges</p>
 
 However, introducing this many edges may be computationally prohibitive, so finding other potential edge and node features might be a more prudent approach. And of course, as other work in this area has shown, creating nodes that do not correspond to pixels 1:1 may be an even better approach [1].
