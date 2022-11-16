@@ -10,21 +10,27 @@ A visualization of the process is shown below:
 
 <p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true" />
+</p>
 
-
+<p align="center">
 Figure 1: an example image from the MNIST dataset
+</p>
 
+<p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20binary%20example.png?raw=true" />
-![Figure 2: the image after the pixels are set to the binary on/off state](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20binary%20example.png?raw=true)
+</p>
 
-
+<p align="center">
 Figure 2: the image after the pixels are set to the binary on/off state
+</p>
 
-  
+<p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20example.png?raw=true)" />
+</p>
 
-
+<p align="center">
 Figure 3: the resulting graph</p>
+</p>
 
 In addition to fine tuning the model and hyperparameters, the next steps consist of improving the features of the graph.
 The current implementation notably lacks edge features.
