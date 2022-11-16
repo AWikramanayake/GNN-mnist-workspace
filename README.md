@@ -11,7 +11,6 @@ A visualization of the process is shown below:
 <p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true" />
 </p>
-
 <p align="center">
 Figure 1: an example image from the MNIST dataset
 </p>
@@ -19,7 +18,6 @@ Figure 1: an example image from the MNIST dataset
 <p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20binary%20example.png?raw=true" />
 </p>
-
 <p align="center">
 Figure 2: the image after the pixels are set to the binary on/off state
 </p>
@@ -27,7 +25,6 @@ Figure 2: the image after the pixels are set to the binary on/off state
 <p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20example.png?raw=true)" />
 </p>
-
 <p align="center">
 Figure 3: the resulting graph</p>
 </p>
@@ -40,6 +37,8 @@ One possible improvement would be to add edges to more distant neighbours, with 
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20extended%20example.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-<p style="text-align: center;">Figure 4:  a graph with additional longer edges</p>
+<p style="text-align: center;">
+Figure 4:  a graph with additional longer edges
+</p>
 
 However, introducing this many edges may be computationally prohibitive, so finding other potential edge and node features might be a more prudent approach. And of course, as other work in this area has shown, creating nodes that do not correspond to pixels 1:1 may be an even better approach [1].
