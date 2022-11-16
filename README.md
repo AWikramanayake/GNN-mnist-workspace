@@ -1,4 +1,4 @@
-# GNN-mnist-playground
+# GNN-mnist-workspace
 
 The purpose of this project is to practice using GNNs to work with pixel-based data.
 
