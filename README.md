@@ -9,8 +9,7 @@ At present, the DatasetGeneration class produces graphs similar to those that ca
 A visualization of the process is shown below:
 
 <p align="center">
-<img src="GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true"/>
-![Figure 1: an example image from the MNIST dataset](https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true)
+<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true" />
 
 
 Figure 1: an example image from the MNIST dataset
