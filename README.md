@@ -36,8 +36,7 @@ One possible improvement would be to add edges to more distant neighbours, with 
 <p align="center">
 <img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20extended%20example.png?raw=true" alt="Sublime's custom image"/>
 </p>
-
-<p style="text-align: center;">
+<p align="center">
 Figure 4:  a graph with additional longer edges
 </p>
 
