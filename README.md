@@ -9,21 +9,21 @@ At present, the DatasetGeneration class produces graphs similar to those that ca
 A visualization of the process is shown below:
 
 <p align="center">
-<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20base%20example.png?raw=true" />
+<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/examples/MNIST%20base%20example.png?raw=true" />
 </p>
 <p align="center">
 Figure 1: an example image from the MNIST dataset
 </p>
 
 <p align="center">
-<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20binary%20example.png?raw=true" />
+<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/examples/MNIST%20binary%20example.png?raw=true" />
 </p>
 <p align="center">
 Figure 2: the image after the pixels are set to the binary on/off state
 </p>
 
 <p align="center">
-<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20example.png?raw=true)" />
+<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/examples/MNIST%20graph%20example.png?raw=true)" />
 </p>
 <p align="center">
 Figure 3: the resulting graph</p>
@@ -34,7 +34,7 @@ The current implementation notably lacks edge features.
 One possible improvement would be to add edges to more distant neighbours, with the edges weighted by distance.
 
 <p align="center">
-<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/MNIST%20graph%20extended%20example.png?raw=true" alt="Sublime's custom image"/>
+<img src="https://github.com/AWikramanayake/GNN-mnist-playground/blob/main/examples/MNIST%20graph%20extended%20example.png?raw=true" alt="Sublime's custom image"/>
 </p>
 <p align="center">
 Figure 4:  a graph with additional longer edges
