@@ -1,0 +1,3 @@
+This branch is to to be used to explore the possibility of adding information such as a direction unit vector as an edge feature.
+
+Care must be taken to ensure that rotational invariance is maintained (i.e.: performance should not be affected if the digits are rotated). One possible solution is to use edge features to update a global feature.
