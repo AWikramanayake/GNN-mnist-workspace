@@ -1,0 +1,1 @@
+This branch is to be used to modify the GenerateDataset class to add edges between nodes in a larger neighbourhood.
