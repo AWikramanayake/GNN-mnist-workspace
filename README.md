@@ -47,7 +47,7 @@ However, introducing this many edges may be computationally prohibitive, so find
 
 
 
-#### Extended Neighbourhoods update: 21/11/2022
+### Extended Neighbourhoods update: 21/11/2022
 
 Extended neighbourhoods to bright pixels one layer beyond the initial neighbourhood-of-8 has been successfully implemented. Additional extentions can be easily added using the Distance Matrix and additional loops in GenerateDataset class.
 
