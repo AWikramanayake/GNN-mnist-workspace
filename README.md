@@ -44,3 +44,17 @@ However, introducing this many edges may be computationally prohibitive, so find
 
 
 [1]: Monti, F., Boscaini, D., Masci, J., Rodola, E., Svoboda, J., &amp; Bronstein, M. M. (2017). Geometric deep learning on graphs and manifolds using mixture model cnns. 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR). https://doi.org/10.1109/cvpr.2017.576 
+
+
+
+
+
+## Extended Neighbourhoods update: 21/11/2022
+
+Extended neighbourhoods to bright pixels one layer beyond the initial neighbourhood-of-8 has been successfully implemented. Additional extentions can be easily added using the Distance Matrix and additional loops in GenerateDataset class.
+
+The initial testing with a simple model suggests that the extended neighbourhoods do in fact improve the model, which was not a given as it was possible that this addition could have been made redundant by the convolution process. However, when using a simple model (see "Extended Neighbourhood Test/Control" notebooks), the model attains a greater final accuracy in fewer epochs.
+
+The computational time is not considerably worse despite the increase in the density of the adjacency matrix, at least for this simple model.
+
+This change introduces a new parameter that needs to be optimized: the scaling of edge weights with distance.

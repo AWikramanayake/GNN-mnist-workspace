@@ -2,6 +2,7 @@ import numpy as np
 import scipy.sparse as sp
 from scipy.spatial.distance import cdist
 import tensorflow as tf
+import time
 
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense
@@ -37,40 +38,49 @@ x_test = np.where(0.4 < x_test, 1, 0)
 # The details of this format can be found here: https://graphneural.network/data/#graph
 
 class GenerateDataset(Dataset):
-    def __init__(self, n_samples, data, labels, **kwargs):
+    def __init__(self, n_samples, data, labels, nbdsize =1, **kwargs):
         self.n_samples = n_samples
         self.data = data
         self.labels = labels
+        self.nbdsize = nbdsize
         super().__init__(**kwargs)
     
     
     def read(self):
         def make_graph(ind):
-            #Flatten the 28x28 grid into a 784 length array
-            #This will be immediately undone in the next step but is being done here anyway as practice for future projects
+            # Flatten the 28x28 grid into a 784 length array
+            # This will be immediately undone in the next step but is being done here anyway as practice for future projects
             nodes = np.ndarray.flatten(self.data[ind])
-            #Isolate the indices of the bright pixels
+            # Isolate the indices of the bright pixels
             bright = np.delete((np.where(nodes == 1)), -1)
             
             node_coords = []
             edges = []
+            edges_2 = []
             
-            #The divmod function returns the coordinates from the index in the 784-array
-            #The quotient yields the y-coordinate and the remainder yields the x-coordinate
+            # The divmod function returns the coordinates from the index in the 784-array
+            # he quotient yields the y-coordinate and the remainder yields the x-coordinate
             for i in range(len(bright)):
                 node_coords.append(divmod(bright[i],28))
             
-            #This creates a matrix of the distances between the bright pixels
+            # This creates a matrix of the distances between the bright pixels
             DistMat = cdist(node_coords, node_coords)
             
-            #This step iterates over pairs of bright pixels, and the indices of the pairs are added to 'edges' if they are within a certain distance
-            #Selecting 1.5 will result edges being created between bright pixels that are within each others' neighbourhood-of-8
-            #(Diagonal distance is sqrt(2) =~ 1.414)
-            #The distance can be increased accordingly to include larger neighbourhoods
+            # This step iterates over pairs of bright pixels, and the indices of the pairs are added to 'edges' if they are within a certain distance
+            # Selecting 1.5 will result edges being created between bright pixels that are within each others' neighbourhood-of-8
+            # (Diagonal distance is sqrt(2) =~ 1.414)
+            # The distance can be increased accordingly to include larger neighbourhoods
             for i in range(len(node_coords)):
-                for j in range(i+1, len(node_coords)):
-                    if DistMat[i][j] <= 1.5:
-                        edges.append((bright[i],bright[j]))
+                if self.nbdsize == 1:
+                    for j in range(i+1, len(node_coords)):
+                        if DistMat[i][j] <= 1.5:
+                            edges.append((bright[i],bright[j]))
+                elif self.nbdsize == 2:
+                    for j in range(i+1, len(node_coords)):
+                        if DistMat[i][j] <= 1.5:
+                            edges.append((bright[i],bright[j]))
+                        elif DistMat[i][j] <= 2.3:
+                            edges_2.append((bright[i],bright[j]))
                                 
 
             # Node features
@@ -79,13 +89,17 @@ class GenerateDataset(Dataset):
             # Edges
             r, c = zip(*edges)
             a = sp.csr_matrix((np.ones(len(r)), (np.array(r), np.array(c))), shape=(784, 784), dtype=np.float32)
+            if self.nbdsize == 2:
+                r_2, c_2 = zip(*edges_2)
+                a_2 = sp.csr_matrix(((np.ones(len(r_2))/3), (np.array(r_2), np.array(c_2))), shape=(784, 784), dtype=np.float32)
+                a = a + a_2
             
             # Labels
             y = self.labels[ind]
             
             # Counters and Diagnostics
             if ind == 0:
-                print("started")
+                print("Graph generation started")
             elif (ind%100) == 0:
                 print(ind, "graphs generated")
                 
@@ -101,14 +115,14 @@ class GenerateDataset(Dataset):
 
 # Generating and shuffling the data  
 # Calling this generates the train, test, and validation datasets with randomized indices      
-traindata = GenerateDataset(len(x_train), x_train, y_train)
+traindata = GenerateDataset(len(x_train), x_train, y_train, 2)
 idxs = np.random.permutation(len(traindata))
 split_val = int(0.85 * len(traindata))
 idx_tr, idx_val = np.split(idxs, [split_val])
 data_tr = traindata[idx_tr]
 data_val = traindata[idx_val]
 
-testdata = GenerateDataset(len(x_test), x_test, y_test)
+testdata = GenerateDataset(len(x_test), x_test, y_test, 2)
 idx_test = np.random.permutation(len(testdata))
 data_test = testdata[idx_test]
 
@@ -182,6 +196,8 @@ step = 0
 
 # Training loop
 results_tr = []
+start_time = time.process_time()
+e_num = 1
 for batch in loader_tr:
     step += 1
 
@@ -205,6 +221,8 @@ for batch in loader_tr:
         # Print results
         results_tr = np.array(results_tr)
         results_tr = np.average(results_tr[:, :-1], 0, weights=results_tr[:, -1])
+        end_time = time.process_time()
+        process_time = end_time - start_time
         print(
             "Train loss: {:.4f}, acc: {:.4f} | "
             "Valid loss: {:.4f}, acc: {:.4f} | "
@@ -212,7 +230,14 @@ for batch in loader_tr:
                 *results_tr, *results_va, *results_te
             )
         )
+        print(
+            "Epoch Number: {:.0f}, Epoch Time: {:.0f} minutes {:.0f} seconds ".format(
+                e_num, (process_time // 60), (process_time % 60)
+            )
+        )
 
         # Reset epoch
         results_tr = []
         step = 0
+        e_num += 1
+        start_time = time.process_time()
